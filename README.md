@@ -16,14 +16,14 @@ npm run build
 npm test
 ```
 
-The bootstrap downloads only the exact public `v0.1.0` dependency assets listed in `scripts/release-dependencies.json`, verifies SHA256 and byte size, and adds them to the npm cache. It does not extract archives, run package scripts, collect application data, or send credentials. Downloads require the explicit flag and follow only HTTPS GitHub asset redirects. Installation then fetches ordinary third-party dependencies from npm. Use a writable npm cache; set `npm_config_cache` consistently for both commands if needed. An unavailable asset, changed hash, or oversized response stops installation.
+The bootstrap downloads only the exact `v0.1.0` dependency assets from [GitHub Releases](https://github.com/Zof-AI/zof-policy-as-code/releases), as listed in `scripts/release-dependencies.json`, verifies SHA256 and byte size, and adds them to the npm cache. It does not extract archives, run package scripts, collect application data, or send credentials. Downloads require the explicit flag and follow only HTTPS GitHub asset redirects. Installation then fetches ordinary third-party dependencies from npm. Use a writable npm cache; set `npm_config_cache` consistently for both commands if needed. An unavailable asset, changed hash, or oversized response stops installation.
 
 GitHub source and release artifacts are the initial distribution channel. These instructions do not claim that `@zof-ai` packages are published on npm or that the VS Code extension is listed in Marketplace.
 <!-- ZOF_RELEASE_INSTALL_END -->
 
 ## Install and quick start
 
-Requires Node.js 22 or 24. This is an unpublished release candidate; package and repository destinations are proposed. Once its dependencies are published, build from a clean checkout with:
+Requires Node.js 22 or 24. After the GitHub source installation above, validate the checkout with:
 
 ```sh
 npm ci --ignore-scripts
@@ -64,4 +64,4 @@ Policies contain `version: "1.0"` and 1–100 rules with unique alphanumeric IDs
 
 Rules only inspect supplied data. No test is run and evidence authenticity is not established. Tool names and commits can be forged in unsigned evidence; verify authenticity separately where required. Known sensitive patterns are redacted, but callers must minimize sensitive input. Inputs are bounded by the evidence library; files outside the current root and symlinks are rejected. No raw application logs or environment capture occurs. Read [SECURITY.md](SECURITY.md).
 
-Built independently for the [Zof](https://zof.ai) ecosystem. No hosted integration is claimed. Apache-2.0 is the proposed license, pending owner/legal approval before publication. See [CONTRIBUTING.md](CONTRIBUTING.md) and [release process](docs/RELEASE.md).
+Built independently for the [Zof](https://zof.ai) ecosystem. No hosted integration is claimed. Licensed under [Apache-2.0](LICENSE). See [CONTRIBUTING.md](CONTRIBUTING.md) and [release process](docs/RELEASE.md).
