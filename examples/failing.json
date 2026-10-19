@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "example-tests",
+  "createdAt": "2026-01-01T00:00:00Z",
+  "source": {
+    "repository": null,
+    "commit": null
+  },
+  "execution": {
+    "status": "completed",
+    "result": "fail"
+  },
+  "findings": [],
+  "tests": [
+    {
+      "name": "addition",
+      "status": "failed"
+    }
+  ],
+  "artifacts": [],
+  "tool": {
+    "name": "synthetic-tests",
+    "version": "1.0.0"
+  },
+  "type": "tests"
+}

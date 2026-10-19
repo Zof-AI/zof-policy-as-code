@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "rules": [
+    {
+      "id": "tests",
+      "type": "all-tests-pass"
+    },
+    {
+      "id": "findings",
+      "type": "deny-severity",
+      "severity": "high"
+    },
+    {
+      "id": "producer",
+      "type": "approved-tools",
+      "names": [
+        "synthetic-tests"
+      ]
+    },
+    {
+      "id": "fresh",
+      "type": "max-age",
+      "seconds": 60
+    },
+    {
+      "id": "category",
+      "type": "required-types",
+      "types": [
+        "tests"
+      ]
+    }
+  ]
+}
