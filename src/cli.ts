@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { safeReadJson } from '@zof-ai/evidence-spec';
+import { safeReadJson } from '@zofai/evidence-spec';
 import { evaluatePolicy, formatReport } from './index.js';
 async function main() {
   const args=process.argv.slice(2);
