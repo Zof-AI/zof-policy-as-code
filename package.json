@@ -1,6 +1,6 @@
 {
   "name": "@zof-ai/policy-as-code",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Deterministic offline policies for portable verification evidence",
   "type": "module",
   "main": "./dist/index.js",
@@ -56,6 +56,6 @@
     "@types/node": "22.19.11"
   },
   "dependencies": {
-    "@zof-ai/evidence-spec": "0.1.0"
+    "@zof-ai/evidence-spec": "0.1.1"
   }
 }

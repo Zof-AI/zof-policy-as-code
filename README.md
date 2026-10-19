@@ -2,13 +2,42 @@
 
 Evaluate explicit local rules against portable verification evidence. CI maintainers can require completed passing tests, reject severe findings, approve tool names, pin commits, limit evidence age and require verification categories. This is a deterministic public utility with no network, scripts, plugins or account requirement.
 
+<!-- ZOF_NPM_INSTALL_START -->
+## Install from npm
+
+Use Node.js 22 or 24 and npm. File-based operations require Linux or macOS with Python 3.10 or newer; Windows file operations fail closed. In a new project directory, install the version used by this guide:
+
+```sh
+npm install --ignore-scripts --save-exact @zof-ai/policy-as-code@0.1.1
+npx --no-install zof-policy-as-code --help
+```
+
+The package includes compiled JavaScript, TypeScript declarations and its runtime dependencies. No source build, Zof account or repository upload is required. `--ignore-scripts` disables installation lifecycle scripts; `--no-install` keeps the example commands from downloading another package.
+
+Confirm the public ESM entry point; this prints `function`:
+
+```sh
+node --input-type=module -e "import('@zof-ai/policy-as-code').then(api => console.log(typeof api.evaluatePolicy))"
+```
+
+Run a packaged example from the same directory:
+
+```sh
+npx --no-install zof-policy-as-code node_modules/@zof-ai/policy-as-code/examples/strict-policy.json node_modules/@zof-ai/policy-as-code/examples/passing.json --json --now 2026-01-01T00:00:30Z
+```
+
+The fixed-time example prints `result: "pass"` and the decisions for each rule.
+
+Package: [@zof-ai/policy-as-code](https://www.npmjs.com/package/@zof-ai/policy-as-code). The source-checkout instructions and three additional workflows follow.
+<!-- ZOF_NPM_INSTALL_END -->
+
 <!-- ZOF_RELEASE_INSTALL_START -->
 ## Install from GitHub source
 
 Requires Node.js 22 or 24, npm, and Git. Filesystem operations require Linux or macOS with Python 3.10 or newer; Windows file operations fail closed. Clone this repository and explicitly prepare its reviewed release dependencies:
 
 ```sh
-git clone https://github.com/Zof-AI/zof-policy-as-code.git
+git clone --branch v0.1.1 --depth 1 https://github.com/Zof-AI/zof-policy-as-code.git
 cd zof-policy-as-code
 node scripts/bootstrap.mjs --allow-network
 npm ci --ignore-scripts --prefer-offline
@@ -16,9 +45,8 @@ npm run build
 npm test
 ```
 
-The bootstrap downloads only the exact `v0.1.0` dependency assets from [GitHub Releases](https://github.com/Zof-AI/zof-policy-as-code/releases), as listed in `scripts/release-dependencies.json`, verifies SHA256 and byte size, and adds them to the npm cache. It does not extract archives, run package scripts, collect application data, or send credentials. Downloads require the explicit flag and follow only HTTPS GitHub asset redirects. Installation then fetches ordinary third-party dependencies from npm. Use a writable npm cache; set `npm_config_cache` consistently for both commands if needed. An unavailable asset, changed hash, or oversized response stops installation.
+The bootstrap downloads only the exact versioned dependency assets from [GitHub Releases](https://github.com/Zof-AI/zof-policy-as-code/releases), as listed in `scripts/release-dependencies.json`, verifies SHA256 and byte size, and adds them to the npm cache. It does not extract archives, run package scripts, collect application data, or send credentials. Downloads require the explicit flag and follow only HTTPS GitHub asset redirects. Installation then fetches ordinary third-party dependencies from npm. Use a writable npm cache; set `npm_config_cache` consistently for both commands if needed. An unavailable asset, changed hash, or oversized response stops installation.
 
-GitHub source and release artifacts are the initial distribution channel. These instructions do not claim that `@zof-ai` packages are published on npm or that the VS Code extension is listed in Marketplace.
 <!-- ZOF_RELEASE_INSTALL_END -->
 
 ## Install and quick start
@@ -32,7 +60,7 @@ npm test
 node dist/cli.js examples/strict-policy.json examples/passing.json --json --now 2026-01-01T00:00:30Z
 ```
 
-During candidate review, the program's private staging script supplies reviewed dependency tarballs and seeds an isolated npm cache. Do not claim a registry installation has passed before publication. The final command prints `result: "pass"` and explanatory rule decisions.
+The final command prints `result: "pass"` and explanatory rule decisions. The explicit timestamp makes the example reproducible.
 
 ## Three examples
 

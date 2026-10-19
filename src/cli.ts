@@ -4,7 +4,7 @@ import { evaluatePolicy, formatReport } from './index.js';
 async function main() {
   const args=process.argv.slice(2);
   if(args.includes('--help') || !args.length) {console.log('Usage: zof-policy-as-code <policy.json> <evidence.json> [--json] [--now <ISO timestamp>]\nPaths are relative to the current directory. Exit: 0 pass, 1 fail, 2 invalid or indeterminate.');return;}
-  if(args.length===1&&args[0]==='--version'){console.log('0.1.0');return;}
+  if(args.length===1&&args[0]==='--version'){console.log('0.1.1');return;}
   const [policyPath,evidencePath,...flags]=args;
   if(!policyPath||!evidencePath) throw new Error('usage');
   let json=false; let now: string|undefined;
