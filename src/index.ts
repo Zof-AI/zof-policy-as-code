@@ -1,4 +1,4 @@
-import { validateEvidence, redact, type Evidence } from '@zofai/evidence-spec';
+import { validateEvidence, redact, type Evidence } from '@zof-ai/evidence-spec';
 
 export type Decision = 'pass' | 'fail' | 'indeterminate';
 export type Rule =

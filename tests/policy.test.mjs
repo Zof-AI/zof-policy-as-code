@@ -4,7 +4,7 @@ import {spawnSync} from 'node:child_process';
 import {mkdtemp,writeFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
-import {createEvidence} from '@zofai/evidence-spec';
+import {createEvidence} from '@zof-ai/evidence-spec';
 import {evaluatePolicy,validatePolicy,formatReport} from '../dist/index.js';
 const evidence=(extra={})=>createEvidence({tool:{name:'synthetic',version:'1.0.0'},type:'tests',createdAt:'2026-01-01T00:00:00Z',execution:{status:'completed',result:'pass'},tests:[{name:'addition',status:'passed'}],source:{repository:null,commit:'a'.repeat(40)},...extra});
 const policy=(...rules)=>({version:'1.0',rules:rules.map((r,i)=>({id:`r${i}`,...r}))});
